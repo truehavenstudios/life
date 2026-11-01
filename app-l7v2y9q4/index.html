@@ -1305,6 +1305,7 @@ function welcomeHTML(o) {
 
 /* app */
 /* Life Planner – TrueHaven Studios: a year planner for goals, habits, vision and gentle reviews */
+window.LIFE_SHORTCUT = "https://www.icloud.com/shortcuts/0d2ddccd6b994e7b8c42e95ce01715c0";
 const AREAS0 = [["health", "Health", "🌿"], ["mind", "Mind & calm", "🕊️"], ["love", "Love", "🤍"], ["people", "Family & friends", "🫶"], ["work", "Career", "💼"], ["money", "Money", "🪙"], ["home", "Home", "🏡"], ["joy", "Fun & growth", "✨"]];
 const HEALTH = { steps: ["Steps", "steps", 8000], ex: ["Exercise minutes", "min", 30], sleep: ["Sleep", "h", 7], mind: ["Mindful minutes", "min", 5], water: ["Water", "ml", 2000] };
 const MOODS = [["Rough", "#C98B7E"], ["Low", "#D9B48A"], ["Okay", "#C9C28E"], ["Good", "#9DB89A"], ["Great", "#6F9C83"]];
@@ -1316,7 +1317,7 @@ const APP = {
   fab: ["quickAdd", "Add"],
   blank() {
     const t = today(), y = +t.slice(0, 4), m = +t.slice(5, 7);
-    return { v: 1, setup: false, created: t, settings: { name: "", theme: "Sage", dark: "auto", year: m >= 10 ? y + 1 : y, word: "", weekStart: 1, shortcut: "Life Sync", hideStart: false },
+    return { v: 1, setup: false, created: t, settings: { name: "", theme: "Sage", dark: "auto", year: m >= 10 ? y + 1 : y, word: "", weekStart: 1, shortcut: "Life sync", hideStart: false },
       areas: AREAS0.map(([id, n, e]) => ({ id, n, e })), wheel: {}, goals: [], habits: [], days: {}, focus: {}, vision: [], letter: { text: "", open: "" }, reviews: {}, lastBackup: "", lastSync: 0 };
   },
   migrate(o) {
@@ -1827,7 +1828,7 @@ function readSync() {
   setTimeout(() => toast(t.length ? `${ic("heart")} Apple Health ticked ${t.map(h => esc(h.t)).join(", ")}` : `${ic("heart")} Synced from Apple Health`), 350);
 }
 const healthText = (k, v) => k === "steps" ? Math.round(v).toLocaleString() + " steps" : k === "sleep" ? `${Math.floor(v)} h ${Math.round(v % 1 * 60)} min sleep` : k === "water" ? (v / 1000).toFixed(1) + " l water" : Math.round(v) + " " + HEALTH[k][1] + (k === "ex" ? " exercise" : " mindful");
-const runShortcut = () => { location.href = "shortcuts://run-shortcut?name=" + encodeURIComponent(S.settings.shortcut || "Life Sync"); };
+const runShortcut = () => { location.href = "shortcuts://run-shortcut?name=" + encodeURIComponent(S.settings.shortcut || "Life sync"); };
 
 // ------------------------------------------------------------ small pieces
 const MOOD_FACES = ["M8 16.5c1.2-1.4 2.6-2 4-2s2.8.6 4 2", "M8.5 16c1-.8 2.2-1.2 3.5-1.2s2.5.4 3.5 1.2", "M8.5 15.5h7", "M8.5 14.5c1 1 2.2 1.5 3.5 1.5s2.5-.5 3.5-1.5", "M8 14c1.1 1.6 2.4 2.4 4 2.4s2.9-.8 4-2.4"];
